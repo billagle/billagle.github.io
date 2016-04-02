@@ -1,0 +1,68 @@
+---
+layout: default
+title: Home
+---
+<div class="heading jumbotron">
+    <div class="container" id="header"><h1 class="element" style="position: relative;top: 50%;color:#FFF;font-family: 'Oswald';font-size:8vw" align="center">BILL AGLE</h1></div>
+        <img class="portrait" src="">
+        <svg class="slant" viewBox="0 0 1 1" preserveAspectRatio="none">
+            <polygon points="0,1 1,1 1,0">
+        </svg>
+    </div>
+</div>
+
+<div class="about" id="about"> 
+    <div class="container">
+        <h1>About Me</h1>
+        <div class="row">
+            <div class="col-md-9" id="parent">
+               <h3>Born and raised in North Carolina, I have made multiple albums including Road to Damascus, Turquoise and Silver, and Lovers Rain. After teaching myself how to play my brother's guitar upside down, I never looked back from my love of music. My music has won awards in the United States Air Force, namely my song "Galaxy". Read all about me <a href="/about/index.html">here</a>!</h3> 
+            </div>
+            <div class="col-md-3" id="fill" style="background: url(/img/bill.jpg)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about" id="about" style="background: #3498DB; color:#FFF;padding-bottom:50px;margin-top: 50px"> 
+    <div class="container">
+        <h1>Albums</h1>
+        <div class="row">
+            {%for post in site.posts%}
+                <a href="{{post.url}}"><div class="col-md-2 outer  square wow fadeInUp" style="background: url(img/{{post.bg}}.jpg);background-size:contain;background-align:center;background-position:center;background-repeat:no-repeat;" data-wow-delay="250ms" id="complete"><div class="container inner" align="center"><h3>{{post.title}}</h3></div></div></a>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+<div class="about" id="special" style="padding-bottom: 50px">
+    <div class="container">
+        <h1>Special Songs</h1>
+        <div class="row">
+            <a href="zahra.html">
+                <div class="col-md-6 outer" style="padding:0;background: url(http://www.sbs.com.au/news/sites/sbs.com.au.news/files/images/1/5/150115m_ZahraBaker_800x600.jpg);background-size:cover;background-position:left center;height: 300px">
+                    <div class="inner" align="center" style="top:0;width: 100%;padding-top:20%"><h1 style="top: 50%;color:#000">Zahra Baker</h1></div>
+                </div>
+            </a>
+            <a href="will.html">
+                <div class="col-md-6 outer" style="padding:0;background: url(/img/will.jpg);background-size:cover;background-position:left center;height: 300px">
+                    <div class="inner" align="center" style="top:0;width: 100%;padding-top:20%"><h1 style="top: 50%;color:#000">Will and Bill</h1></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="information" align="center"></div>
+
+<div style="height: 500%"></div>
+<script type="text/javascript" src="/js/scripts.js"></script>
+<script type="text/javascript">
+    $(".square").css('height', $(".square").width())
+    $(".inner").hide();
+    $(".outer").hover(function(){
+        $(this).children().fadeIn();
+    }, function() {
+        $(this).children().fadeOut();
+    })
+</script>
