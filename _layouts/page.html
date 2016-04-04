@@ -4,40 +4,40 @@ layout: default
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+  	{% include head.html %}
 
-  <body class="job">
+ 	<body class="job">
 
-    {% include header.html %}
+		{% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="jumbotron jumbotron-job" align="center">
-      <div class="container">
-        <h1>{{ page.title }}</h1>
-        <hr class="divider wow zoomIn">
-        <div class="row">
-          {{content}}
-        </div>
-      </div>
-    </div>
-<script type="text/javascript">
-      $("#wrapper").toggleClass("toggled");
-        $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-          this.classList.toggle( "active" );
-        });
-        $(".navigation").click(function(){
-          $(".navigation").removeClass('currentlyActive');
-          $(this).addClass('currentlyActive');
-        });
-    </script>
-      </div>
-    </div>
+		<div class="heading jumbotron" style="height: 50%">
+	  		<div class="container" id="header"><h1 class="element" style="position: relative;top: 50%;color:#FFF;font-family: 'Oswald';font-size:8vw" align="center">{{page.title}}</h1></div>
+				<img class="portrait" src="">
+				<svg class="slant" viewBox="0 0 1 1" preserveAspectRatio="none">
+		  			<polygon points="0,1 1,1 1,0">
+				</svg>
+	  		</div>
+		</div>
 
-    {% include footer.html %}
+		{{content}}
 
-  </body>
+		<script type="text/javascript">
+  			$("#wrapper").toggleClass("toggled");
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+		  		$("#wrapper").toggleClass("toggled");
+		  		this.classList.toggle( "active" );
+			});
+			$(".navigation").click(function(){
+		  		$(".navigation").removeClass('currentlyActive');
+		  		$(this).addClass('currentlyActive');
+			});
+		</script>
+
+		{% include footer.html %}
+		<script type="text/javascript">
+			$(".iframe").css('height', $(".iframe").width()*.75)  
+		</script>
+  	</body>
 
 </html>
