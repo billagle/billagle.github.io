@@ -1,40 +1,120 @@
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+  	{% include head.html %}
 
-  <body class="job">
+ 	<body class="job">
 
-    {% include header.html %}
+		{% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="jumbotron jumbotron-job" align="center">
-      <div class="container">
-        <h1>{{ page.title }}</h1>
-        <hr class="divider wow zoomIn">
-        <div class="row">
-          {{content}}
-        </div>
-      </div>
-    </div>
-<script type="text/javascript">
-      $("#wrapper").toggleClass("toggled");
-        $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-          this.classList.toggle( "active" );
-        });
-        $(".navigation").click(function(){
-          $(".navigation").removeClass('currentlyActive');
-          $(this).addClass('currentlyActive');
-        });
-    </script>
-      </div>
-    </div>
+		<div class="heading jumbotron" style="height: 50%;padding:0" align="center">
+	  		<div id="header" align="center" style="width: 100%;height:100%;padding:0">
+	  			<h1 class="element" style="color:#FFF;font-family: 'Oswald';" align="center">{{page.title}}</h1>
+				<img class="portrait" src="">
+	  		</div>
+		</div>
 
-    {% include footer.html %}
+		<div class="container">
+			<h1>About {{page.title}}</h2>
 
-  </body>
+			<h3>{{page.description}}</h3>
+		</div>
+
+		<div class="container">
+			<h1>Buy this album:</h1>
+			<div id="album" class="col-md-3" style="float:left;background:url(/img/{{page.bg}}.jpg);width:25%;background-size:cover;background-align:center"></div>
+			<div class="col-md-9" align="left" style="float: right;width:75%">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="business" value="billagle@gmail.com">
+					<input type="hidden" name="lc" value="GB">
+					<input type="hidden" name="item_name" value="{{page.title}}">
+					<input type="hidden" name="button_subtype" value="services">
+					<input type="hidden" name="no_note" value="0">
+					<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+					<table>
+						<tr><td><input type="hidden" name="on0" value="Electronic or Physical CD"><h3 id="desc">Electronic or Physical CD (+$2.50 shipping)*</h3></td></tr><tr><td><select name="os0">
+							<option value="Electronic" id="elecdesc">Electronic $10.00 USD</option>
+							<option value="Physical" id="physdesc">Physical $13.25 USD</option>
+						</select> </td></tr>
+					</table>
+					<input type="hidden" name="currency_code" value="USD">
+					<input type="hidden" name="option_select0" value="Electronic">
+					<input type="hidden" name="option_amount0" value="10.00" id="electronic">
+					<input type="hidden" name="option_select1" value="Physical">
+					<input type="hidden" name="option_amount1" value="13.25" id="physical">
+					<input type="hidden" name="option_index" value="0">
+					<br>
+					<input type="submit" name="submit" value="Purchase" class="btn btn-primary">
+				</form>
+			</div>
+		</div>
+
+		<div class="container">
+			<h1>Listen to Songs from {{page.title}}</h1>
+			<h3><audio controls>
+  				<source src="/music/{{page.song1}}.mp3" type="audio/mp3" style="vertical-align:center">
+			</audio> {{page.song1title}}</h3>
+			{% if page.song2 %}
+			<h3><audio controls>
+  				<source src="/music/{{page.song2}}.mp3" type="audio/mp3" style="vertical-align:center">
+			</audio> {{page.song2title}} </h3>
+			{% endif %}
+			{% if page.song3 %}
+			<h3><audio controls>
+  				<source src="/music/{{page.song3}}.mp3" type="audio/mp3" style="vertical-align:center">
+			</audio> {{page.song3title}}</h3>
+			{% endif %}
+			{% if page.song4 %}
+			<h3><audio controls>
+  				<source src="/music/{{page.song4}}.mp3" type="audio/mp3" style="vertical-align:center">
+			</audio> {{page.song4title}}</h3>
+			{% endif %}
+			{% if page.song5 %}
+			<h3><audio controls>
+  				<source src="/music/{{page.song5}}.mp3" type="audio/mp3" style="vertical-align:center">
+			</audio> {{page.song5title}}</h3>
+			{% endif %}
+		</div>
+
+
+		<script type="text/javascript">
+  			$("#wrapper").toggleClass("toggled");
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+		  		$("#wrapper").toggleClass("toggled");
+		  		this.classList.toggle( "active" );
+			});
+			$(".navigation").click(function(){
+		  		$(".navigation").removeClass('currentlyActive');
+		  		$(this).addClass('currentlyActive');
+			});
+		</script>
+		<h5>* - Electronic will be emailed as a zip file containing album art upon purchase</h5>
+		{% include footer.html %}
+		<script type="text/javascript">
+			$(".iframe").css('height', $(".iframe").width()*.75)  
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 				$(".element").css('font-size', '15vw')
+ 				$("h2").css('font-size', '12vw')
+			}
+			else
+			{
+				$(".element").css('font-size', '5vw')
+				$("h2").css('font-size', '3vw')	
+			}
+
+			$("#album").css('height', $("#album").width())
+
+			if("{{page.title}}".indexOf('omplete') > -1)
+			{
+				$('#electronic').attr('value', '40')
+				$('#physical').attr('value', '43')
+				$('select option:contains("elec")').text('Electronic $40');
+				$('select option:contains("phys")').text('Physical $43');
+				$("#desc").text('Electronic or Physical CD (+$3 shipping)')
+			}
+		</script>
+  	</body>
 
 </html>

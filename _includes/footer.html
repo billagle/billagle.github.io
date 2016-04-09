@@ -1,0 +1,10 @@
+<script type="text/javascript" src="/js/scripts.js"></script>
+<script type="text/javascript">
+    $(".square").css('height', $(".square").width())
+    $(".inner").hide();
+    $(".outer").hover(function(){
+        $(this).children().fadeIn();
+    }, function() {
+        $(this).children().fadeOut();
+    })
+</script>

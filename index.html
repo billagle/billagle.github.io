@@ -2,12 +2,17 @@
 layout: default
 title: Home
 ---
-<div class="heading jumbotron">
+<div class="heading jumbotron" style="margin:0;" id="header">
     <div class="container" id="header"><h1 class="element" style="position: relative;top: 50%;color:#FFF;font-family: 'Oswald';font-size:8vw" align="center">BILL AGLE</h1></div>
         <div class="portrait"></div>
-        <svg class="slant" viewBox="0 0 1 1" preserveAspectRatio="none">
-            <polygon points="0,1 1,1 1,0">
-        </svg>
+    </div>
+</div>
+
+<div class="about" style="margin-top: 0px" id="albums">
+    <div class="row">
+        {%for post in site.posts%}
+            <a href="{{post.url}}"><div class="col-xs-2 outer square" style="background: url(img/{{post.bg}}.jpg);background-size:cover;background-align:center;background-position:center;background-repeat:no-repeat;padding:0;margin:0" data-wow-delay="250ms" id="complete"><div class="container inner" align="center" style="padding:0"><h2 style="color: #000;position: relative; top: 50%;transform: translateY(50%)">{{post.title}}</h2></div></div></a>
+        {%endfor%}
     </div>
 </div>
 
@@ -20,17 +25,6 @@ title: Home
             </div>
             <div class="col-md-3" id="fill" style="background: url(/img/bill.jpg)">
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="about" id="albums" style="background: #3498DB; color:#FFF;padding-bottom:50px;margin-top: 50px"> 
-    <div class="container">
-        <h1>Albums</h1>
-        <div class="row">
-            {%for post in site.posts%}
-                <a href="{{post.url}}"><div class="col-md-2 outer  square wow fadeInUp" style="background: url(img/{{post.bg}}.jpg);background-size:contain;background-align:center;background-position:center;background-repeat:no-repeat;" data-wow-delay="250ms" id="complete"><div class="container inner" align="center"><h3>{{post.title}}</h3></div></div></a>
-            {%endfor%}
         </div>
     </div>
 </div>
@@ -50,6 +44,14 @@ title: Home
                 </div>
             </a>
         </div>
+    </div>
+</div>
+
+<div class="about" id="productions" style="padding-bottom: 50px">
+    <div class="container">
+        <h1>Artist Productions</h1>
+        <h3>We can help take your idea for a project of original music through the entire process including arranging, recording, studio musician selection, mixing, mastering, pressing, and proper placement in areas where you can best market your music. If you would like information – please write me at the contact area of the website. We look forward to working with you.</h3>
+        <img src="/img/roundhead.jpg" style="float: left" id="roundhead"><img id="logan" src="/img/logan.png" style="float: right">
     </div>
 </div>
 
@@ -73,5 +75,16 @@ title: Home
         $(this).children().fadeIn();
     }, function() {
         $(this).children().fadeOut();
-    })
+    });
+    $("#header").height($(window).height() - $("#albums").height() - 96)
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $("#header").css('height', '30%');
+        $(".album").removeClass('col-xs-2');
+        $(".album").addClass('col-xs-4');
+    }
+    else
+    {
+        $("#header").height($(window).height() - $("#albums").height() - 96)
+    }
+    $("#logan").height($("#roundhead").height())
 </script>
